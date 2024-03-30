@@ -23,31 +23,32 @@ export default function SwipeableTemporaryDrawer() {
   const changeCourseList: (
     event: React.ChangeEvent<unknown>,
     page: number
-  ) => void = React.useCallback(async (_, page: number) => {
-    try {
-      const { status, results } = await getCourseList(page, PAGE_SIZE);
-      if (status.code === 0) {
-        setCourseList(results.result);
-      } else {
+  ) => void = React.useCallback(
+    async (_, page: number) => {
+      try {
+        const { status, results } = await getCourseList(page, PAGE_SIZE);
+        if (status.code === 0) {
+          setCourseList(results.result);
+        } else {
+          setMessage({
+            show: true,
+            msg: status.message,
+          });
+        }
+      } catch (error) {
         setMessage({
           show: true,
-          msg: status.message,
+          msg: String(error),
         });
       }
-    } catch (error) {
-      setMessage({
-        show: true,
-        msg: String(error),
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    },
+    [setCourseList, setMessage]
+  );
 
-  const selectCourse = React.useCallback((course: Course) => {
+  const selectCourse = (course: Course) => {
     setSelectedCourse(course);
     setOpen(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   return (
     <>
