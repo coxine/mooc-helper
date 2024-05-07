@@ -2,7 +2,7 @@
   <a href="https://github.com/lujunji-xiaolu/mooc-helper" rel="noopener" target="_blank"><img width="150" src="./docs/media/logo.svg" alt="mooc helper logo"></a>
 </p>
 
-<h1 align="center">mooc helper</h1>
+<h1 align="center">MOOC Helper</h1>
 
 查询**中国大学 MOOC(慕课)课程**的**单元测验**、**单元作业**、**期中/期末测试**的答案
 
@@ -18,14 +18,9 @@
 
 ## 使用步骤
 
-1. 下载 Android 端抓包工具 [HttpCanary for Android - APK Download (apkpure.com)](https://apkpure.com/httpcanary-—-http-sniffer-capture-analysis/com.guoshi.httpcanary)
-1. 通过 HttpCanary 抓包工具获取你的 `mob-token`
+1. 获取 `mob-token`，可以使用 [PCAPdroid](./docs/pcapdroid.md) 或 [Charles](./docs/charles.md) 。
 
-https://user-images.githubusercontent.com/95520590/170272233-b43614b8-e3bb-4111-a5c7-d54df0209d4e.mp4
-
-2. 点击[网站](https://mooc-helper.vercel.app/)右上角**设置按钮**，将获取的`mob-token`粘贴到**MOB_TOKEN 输入框**中。然后关闭设置，等待片刻。
-
-> 如果你无法使用 HttpCanary，你可以尝试使用 [Charles 代理](https://juejin.cn/post/7345905452793167907#heading-2)。
+2. 点击应用右上角**设置按钮**，将获取的 `mob-token` 粘贴到**MOB_TOKEN 输入框**中。然后关闭设置，等待片刻。
 
 ## 注意事项
 
