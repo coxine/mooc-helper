@@ -41,3 +41,16 @@
 本项目中的所有内容均基于作者的个人见解和经验，不代表任何组织或公司的观点。
 
 使用者应自行承担使用本项目所产生的一切风险。在任何情况下，作者均不对使用本项目而导致的任何损失或损害承担责任。
+
+## 构建桌面应用
+
+```bash
+# 安装依赖
+pnpm install
+# 生成 TAURI 私钥
+pnpm tauri signer generate
+# 自行将私钥添加到环境变量
+# 并更改`src-tauri\tauri.conf.json`中的`"pubkey"`为生成的公钥
+# 构建应用
+pnpm tauri build
+```

@@ -163,7 +163,7 @@ const Home: NextPage<{
               data-ga-event-category="header"
               data-ga-event-action="github"
               onClick={() =>
-                openExternal("https://github.com/xiaolu-lujunji/mooc-helper")
+                openExternal("https://github.com/coxine/mooc-helper")
               }
             >
               <GitHubIcon fontSize="small" />

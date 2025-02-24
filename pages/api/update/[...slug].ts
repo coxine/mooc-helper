@@ -17,7 +17,7 @@ export default async function handler(
     const suffix = platformSuffixMap[target ?? ""];
     if (suffix) {
       const releases = await got(
-        "https://api.github.com/repos/xiaolu-lujunji/mooc-helper/releases"
+        "https://api.github.com/repos/coxine/mooc-helper/releases"
       ).json<
         [
           {
