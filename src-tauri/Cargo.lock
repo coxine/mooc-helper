@@ -2555,9 +2555,9 @@ dependencies = [
 
 [[package]]
 name = "tauri"
-version = "1.1.1"
+version = "1.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "efbf22abd61d95ca9b2becd77f9db4c093892f73e8a07d21d8b0b2bf71a7bcea"
+checksum = "cad0833f2a2833808091721ac4d99ed873f9ae48187523b518f666841cb31701"
 dependencies = [
  "anyhow",
  "attohttpc",
@@ -2676,9 +2676,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime"
-version = "0.11.1"
+version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d49439a5ea47f474572b854972f42eda2e02a470be5ca9609cc83bb66945abe2"
+checksum = "be6283addfc4ccc2bd10ed0d87dcba582bf3f511998047e6a193c13c75cae3c9"
 dependencies = [
  "gtk",
  "http",
@@ -2690,6 +2690,7 @@ dependencies = [
  "serde_json",
  "tauri-utils",
  "thiserror",
+ "url",
  "uuid 1.1.2",
  "webview2-com",
  "windows 0.39.0",
@@ -2697,9 +2698,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime-wry"
-version = "0.11.1"
+version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28dce920995fd49907aa9bea7249ed1771454f11f7611924c920a1f75fb614d4"
+checksum = "0ca3f21cc3502edda0df6d0579870ab4d6dbe82c0da1d67e8c129f8f22eb62ce"
 dependencies = [
  "cocoa",
  "gtk",
@@ -2708,6 +2709,7 @@ dependencies = [
  "raw-window-handle",
  "tauri-runtime",
  "tauri-utils",
+ "url",
  "uuid 1.1.2",
  "webkit2gtk",
  "webview2-com",
