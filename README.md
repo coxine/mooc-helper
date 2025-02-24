@@ -1,18 +1,23 @@
 <p align="center">
-  <a href="https://github.com/lujunji-xiaolu/mooc-helper" rel="noopener" target="_blank"><img width="150" src="./docs/media/logo.svg" alt="mooc helper logo"></a>
+  <a href="https://github.com/coxine/mooc-helper" rel="noopener" target="_blank"><img width="150" src="./docs/media/logo.svg" alt="mooc helper logo"></a>
 </p>
 
 <h1 align="center">MOOC Helper</h1>
+
+> [!IMPORTANT]
+>
+> 感谢原项目作者 [whale4113](https://github.com/whale4113/)的无私奉献。
+> 由于原项目已经停止维护，本项目将继续维护并更新。
 
 查询**中国大学 MOOC(慕课)课程**的**单元测验**、**单元作业**、**期中/期末测试**的答案
 
 ## 网站地址
 
-[mooc helper (mooc-helper.vercel.app)](https://mooc-helper.vercel.app/)
+[mooc helper (https://mooc.cos.tg/)](https://mooc.cos.tg/)
 
 建议国内用户尝试如下方式使用：
 
-- 使用[桌面端应用程序](https://github.com/xiaolu-lujunji/mooc-helper/releases)（目前仅支持 Windows）
+- 使用[桌面端应用程序](https://github.com/coxine/mooc-helper/releases)（目前仅支持 Windows）
 - 手机端访问
 - 本地启动该项目
 
