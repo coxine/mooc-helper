@@ -40,8 +40,7 @@ export function useTheme() {
         | "system";
       setMode(preferMode);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setMode]);
 
   const theme = React.useMemo(() => {
     const designTokens = getDesignTokens(themeMode);

@@ -62,13 +62,12 @@ const Home: NextPage<{
 
   const paperRef = React.useRef<HTMLDivElement>(null);
 
-  const selectCourse = React.useCallback((course: Course) => {
+  const selectCourse = (course: Course) => {
     setSelectedCourse(course);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
-  const updateMocPaperDto = React.useCallback(
-    async (
+  React.useEffect(() => {
+    const updateMocPaperDto = async (
       fetcher: (
         contentId: number
       ) => Promise<Result<{ mocPaperDto: MocPaperDto }>>,
@@ -93,18 +92,14 @@ const Home: NextPage<{
           msg: String(error),
         });
       }
-    },
-    [setMessage]
-  );
+    };
 
-  React.useEffect(() => {
     if (selectedContent?.type === "homework") {
       updateMocPaperDto(homework, selectedContent.contentId);
     }
     if (selectedContent?.type === "quiz") {
       updateMocPaperDto(test, selectedContent.contentId);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedContent]);
 
   React.useEffect(() => {
@@ -114,30 +109,29 @@ const Home: NextPage<{
     });
   }, [selectedCourse]);
 
-  const whenReady = React.useCallback(async () => {
-    try {
-      if (courseList.length !== 0) return;
-      const { status, results } = await getCourseList(1, PAGE_SIZE);
-      if (status.code === 0) {
-        setCount(results.pagination.totlePageCount);
-        setCourseList(results.result);
-        setRecentCourseList(results.result);
-      } else {
+  React.useEffect(() => {
+    const whenReady = async () => {
+      try {
+        if (courseList.length !== 0) return;
+        const { status, results } = await getCourseList(1, PAGE_SIZE);
+        if (status.code === 0) {
+          setCount(results.pagination.totlePageCount);
+          setCourseList(results.result);
+          setRecentCourseList(results.result);
+        } else {
+          setMessage({
+            show: true,
+            msg: status.message,
+          });
+        }
+      } catch (error) {
         setMessage({
           show: true,
-          msg: status.message,
+          msg: String(error),
         });
       }
-    } catch (error) {
-      setMessage({
-        show: true,
-        msg: String(error),
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    };
 
-  React.useEffect(() => {
     store.get("mob-token").then((storedMobToken) => {
       if (storedMobToken !== null) {
         whenReady();
@@ -148,7 +142,6 @@ const Home: NextPage<{
         });
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

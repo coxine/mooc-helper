@@ -17,8 +17,8 @@ export default function ChapterTreeView() {
   const setSelectedContent = useSetRecoilState(selectedContentState);
   const setMessage = useSetRecoilState(messageState);
 
-  const handleSelectedCourseChange = React.useCallback(
-    async (course: Course | null) => {
+  React.useEffect(() => {
+    const handleSelectedCourseChange = async (course: Course | null) => {
       if (course) {
         try {
           const { status, results } = await courseInfo(
@@ -43,15 +43,10 @@ export default function ChapterTreeView() {
           });
         }
       }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedCourse]
-  );
+    };
 
-  React.useEffect(() => {
     handleSelectedCourseChange(selectedCourse);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCourse]);
+  }, [selectedCourse, setMessage]);
 
   return (
     <TreeView
