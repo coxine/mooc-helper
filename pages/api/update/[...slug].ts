@@ -11,7 +11,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { slug } = req.query;
-  const [target, currentVersion] = slug;
+  const isSlugArray = Array.isArray(slug);
+  const [target, currentVersion] = isSlugArray ? slug : [];
 
   if (target) {
     const suffix = platformSuffixMap[target ?? ""];
