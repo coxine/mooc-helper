@@ -34,8 +34,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode 
       }}
     >
       <Typography
-        color="text.primary"
-        variant="h6"
+        variant="subtitle1"
         fontWeight="bold"
         display="block"
       >

@@ -34,7 +34,6 @@ const SingleChoice: React.FC<SingleChoiceProps> = ({ question, isSimpleMode }) =
       }}
     >
       <Typography
-        color="text.primary"
         variant="subtitle1"
         fontWeight="bold"
         display="block"
