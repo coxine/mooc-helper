@@ -5,12 +5,14 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import HTML from "@/components/HTML";
+import { convert } from "html-to-text";
 
 interface MultipleChoiceProps {
   question: ObjectiveQ;
+  isSimpleMode?: boolean;
 }
 
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question }) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode }) => {
   return (
     <Box
       key={question.id}
@@ -37,7 +39,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question }) => {
         fontWeight="bold"
         display="block"
       >
-        <HTML html={question.title} />
+        {isSimpleMode ? convert(question.title, { wordwrap: false }) : <HTML html={question.title} />}
       </Typography>
       <FormControl>
         <FormGroup>
@@ -47,7 +49,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question }) => {
               control={<Checkbox checked={optionDto.answer} />}
               label={
                 <Typography>
-                  <HTML html={optionDto.content} />
+                  {isSimpleMode ? convert(optionDto.content, { wordwrap: false }) : <HTML html={optionDto.content} />}
                 </Typography>
               }
             />

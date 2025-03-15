@@ -16,7 +16,7 @@ declare module '@mui/material/styles/createPalette' {
     900: string;
   }
 
-  interface PaletteColor extends ColorRange {}
+  interface PaletteColor extends ColorRange { }
 
   interface Palette {
     primaryDark: PaletteColor;
@@ -108,171 +108,171 @@ export const getMetaThemeColor = (mode: 'light' | 'dark') => {
 };
 
 export const getDesignTokens = (mode: 'light' | 'dark') =>
-  ({
-    palette: {
-      primary: {
-        ...blue,
-        ...(mode === 'dark' && {
-          main: blue[400],
-        }),
-      },
-      divider: mode === 'dark' ? alpha(blue[100], 0.08) : grey[100],
-      primaryDark: blueDark,
-      mode,
+({
+  palette: {
+    primary: {
+      ...blue,
       ...(mode === 'dark' && {
-        background: {
-          default: blueDark[800],
-          paper: blueDark[900],
-        },
+        main: blue[400],
       }),
-      common: {
-        black: '#1D1D1D',
+    },
+    divider: mode === 'dark' ? alpha(blue[100], 0.08) : grey[100],
+    primaryDark: blueDark,
+    mode,
+    ...(mode === 'dark' && {
+      background: {
+        default: blueDark[800],
+        paper: blueDark[900],
       },
+    }),
+    common: {
+      black: '#1D1D1D',
+    },
+    ...(mode === 'light' && {
+      text: {
+        primary: grey[900],
+        secondary: grey[700],
+      },
+    }),
+    ...(mode === 'dark' && {
+      text: {
+        primary: '#fff',
+        secondary: grey[400],
+      },
+    }),
+    grey,
+    error: {
+      50: '#FFF0F1',
+      100: '#FFDBDE',
+      200: '#FFBDC2',
+      300: '#FF99A2',
+      400: '#FF7A86',
+      500: '#FF505F',
+      main: '#EB0014', // contrast 4.63:1
+      600: '#EB0014',
+      700: '#C70011',
+      800: '#94000D',
+      900: '#570007',
+    },
+    success: {
+      50: '#E9FBF0',
+      100: '#C6F6D9',
+      200: '#9AEFBC',
+      300: '#6AE79C',
+      400: '#3EE07F',
+      500: '#21CC66',
+      600: '#1DB45A',
+      ...(mode === 'dark' && {
+        main: '#1DB45A', // contrast 6.17:1 (blueDark.800)
+      }),
       ...(mode === 'light' && {
-        text: {
-          primary: grey[900],
-          secondary: grey[700],
-        },
+        main: '#1AA251', // contrast 3.31:1
       }),
-      ...(mode === 'dark' && {
-        text: {
-          primary: '#fff',
-          secondary: grey[400],
-        },
+      700: '#1AA251',
+      800: '#178D46',
+      900: '#0F5C2E',
+    },
+    warning: {
+      50: '#FFF9EB',
+      100: '#FFF3C1',
+      200: '#FFECA1',
+      300: '#FFDC48', // vs blueDark900: WCAG 10.4 AAA, APCA 72 Ok for text
+      400: '#F4C000', // vs blueDark900: WCAG 6.4 AA normal, APCA 48 Only large text
+      500: '#DEA500', // vs blueDark900: WCAG 8 AAA normal, APCA 58 Only large text
+      main: '#DEA500',
+      600: '#D18E00', // vs blueDark900: WCAG 6.4 AA normal, APCA 48 Only large text
+      700: '#AB6800', // vs white bg: WCAG 4.4 AA large, APCA 71 Ok for text
+      800: '#8C5800', // vs white bg: WCAG 5.9 AAA large, APCA 80 Best for text
+      900: '#5A3600', // vs white bg: WCAG 10.7 AAA, APCA 95 Best for text
+    },
+  },
+  shape: {
+    borderRadius: 10,
+  },
+  spacing: 10,
+  typography: {
+    fontFamily: ['"IBM Plex Sans"', ...systemFont].join(','),
+    fontFamilyCode: [
+      'Consolas',
+      'Menlo',
+      'Monaco',
+      'Andale Mono',
+      'Ubuntu Mono',
+      'monospace',
+    ].join(','),
+    fontFamilyTagline: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
+    fontFamilySystem: systemFont.join(','),
+    fontWeightSemiBold: 600,
+    fontWeightExtraBold: 800,
+    h1: {
+      fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
+      fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',
+      fontWeight: 800,
+      lineHeight: 78 / 70,
+      ...(mode === 'light' && {
+        color: blueDark[900],
       }),
-      grey,
-      error: {
-        50: '#FFF0F1',
-        100: '#FFDBDE',
-        200: '#FFBDC2',
-        300: '#FF99A2',
-        400: '#FF7A86',
-        500: '#FF505F',
-        main: '#EB0014', // contrast 4.63:1
-        600: '#EB0014',
-        700: '#C70011',
-        800: '#94000D',
-        900: '#570007',
-      },
-      success: {
-        50: '#E9FBF0',
-        100: '#C6F6D9',
-        200: '#9AEFBC',
-        300: '#6AE79C',
-        400: '#3EE07F',
-        500: '#21CC66',
-        600: '#1DB45A',
-        ...(mode === 'dark' && {
-          main: '#1DB45A', // contrast 6.17:1 (blueDark.800)
-        }),
-        ...(mode === 'light' && {
-          main: '#1AA251', // contrast 3.31:1
-        }),
-        700: '#1AA251',
-        800: '#178D46',
-        900: '#0F5C2E',
-      },
-      warning: {
-        50: '#FFF9EB',
-        100: '#FFF3C1',
-        200: '#FFECA1',
-        300: '#FFDC48', // vs blueDark900: WCAG 10.4 AAA, APCA 72 Ok for text
-        400: '#F4C000', // vs blueDark900: WCAG 6.4 AA normal, APCA 48 Only large text
-        500: '#DEA500', // vs blueDark900: WCAG 8 AAA normal, APCA 58 Only large text
-        main: '#DEA500',
-        600: '#D18E00', // vs blueDark900: WCAG 6.4 AA normal, APCA 48 Only large text
-        700: '#AB6800', // vs white bg: WCAG 4.4 AA large, APCA 71 Ok for text
-        800: '#8C5800', // vs white bg: WCAG 5.9 AAA large, APCA 80 Best for text
-        900: '#5A3600', // vs white bg: WCAG 10.7 AAA, APCA 95 Best for text
-      },
     },
-    shape: {
-      borderRadius: 10,
+    h2: {
+      fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
+      fontSize: 'clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)',
+      fontWeight: 800,
+      lineHeight: 44 / 36,
+      color: mode === 'dark' ? grey[100] : blueDark[700],
     },
-    spacing: 10,
-    typography: {
-      fontFamily: ['"IBM Plex Sans"', ...systemFont].join(','),
-      fontFamilyCode: [
-        'Consolas',
-        'Menlo',
-        'Monaco',
-        'Andale Mono',
-        'Ubuntu Mono',
-        'monospace',
-      ].join(','),
-      fontFamilyTagline: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
-      fontFamilySystem: systemFont.join(','),
-      fontWeightSemiBold: 600,
-      fontWeightExtraBold: 800,
-      h1: {
-        fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
-        fontSize: 'clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)',
-        fontWeight: 800,
-        lineHeight: 78 / 70,
-        ...(mode === 'light' && {
-          color: blueDark[900],
-        }),
-      },
-      h2: {
-        fontFamily: ['"PlusJakartaSans-ExtraBold"', ...systemFont].join(','),
-        fontSize: 'clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)',
-        fontWeight: 800,
-        lineHeight: 44 / 36,
-        color: mode === 'dark' ? grey[100] : blueDark[700],
-      },
-      h3: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
-        fontSize: defaultTheme.typography.pxToRem(36),
-        lineHeight: 44 / 36,
-        letterSpacing: 0.2,
-      },
-      h4: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
-        fontSize: defaultTheme.typography.pxToRem(28),
-        lineHeight: 42 / 28,
-        letterSpacing: 0.2,
-      },
-      h5: {
-        fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
-        fontSize: defaultTheme.typography.pxToRem(24),
-        lineHeight: 36 / 24,
-        letterSpacing: 0.1,
-        color: mode === 'dark' ? blue[300] : blue.main,
-      },
-      h6: {
-        fontSize: defaultTheme.typography.pxToRem(20),
-        lineHeight: 30 / 20,
-      },
-      button: {
-        textTransform: 'initial',
-        fontWeight: 700,
-        letterSpacing: 0,
-      },
-      subtitle1: {
-        fontSize: defaultTheme.typography.pxToRem(18),
-        lineHeight: 24 / 18,
-        letterSpacing: 0,
-        fontWeight: 500,
-      },
-      body1: {
-        fontSize: defaultTheme.typography.pxToRem(16), // 16px
-        lineHeight: 24 / 16,
-        letterSpacing: 0,
-      },
-      body2: {
-        fontSize: defaultTheme.typography.pxToRem(14), // 14px
-        lineHeight: 21 / 14,
-        letterSpacing: 0,
-      },
-      caption: {
-        display: 'inline-block',
-        fontSize: defaultTheme.typography.pxToRem(12), // 12px
-        lineHeight: 18 / 12,
-        letterSpacing: 0,
-        fontWeight: 700,
-      },
+    h3: {
+      fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
+      fontSize: defaultTheme.typography.pxToRem(36),
+      lineHeight: 44 / 36,
+      letterSpacing: 0.2,
     },
-  } as ThemeOptions);
+    h4: {
+      fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
+      fontSize: defaultTheme.typography.pxToRem(28),
+      lineHeight: 42 / 28,
+      letterSpacing: 0.2,
+    },
+    h5: {
+      fontFamily: ['"PlusJakartaSans-Bold"', ...systemFont].join(','),
+      fontSize: defaultTheme.typography.pxToRem(24),
+      lineHeight: 36 / 24,
+      letterSpacing: 0.1,
+      color: mode === 'dark' ? blue[300] : blue.main,
+    },
+    h6: {
+      fontSize: defaultTheme.typography.pxToRem(20),
+      lineHeight: 30 / 20,
+    },
+    button: {
+      textTransform: 'initial',
+      fontWeight: 700,
+      letterSpacing: 0,
+    },
+    subtitle1: {
+      fontSize: defaultTheme.typography.pxToRem(18),
+      lineHeight: 24 / 18,
+      letterSpacing: 0,
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: defaultTheme.typography.pxToRem(16), // 16px
+      lineHeight: 24 / 16,
+      letterSpacing: 0,
+    },
+    body2: {
+      fontSize: defaultTheme.typography.pxToRem(14), // 14px
+      lineHeight: 21 / 14,
+      letterSpacing: 0,
+    },
+    caption: {
+      display: 'inline-block',
+      fontSize: defaultTheme.typography.pxToRem(12), // 12px
+      lineHeight: 18 / 12,
+      letterSpacing: 0,
+      fontWeight: 700,
+    },
+  },
+} as ThemeOptions);
 
 export function getThemedComponents(theme: Theme) {
   return {
@@ -373,11 +373,10 @@ export function getThemedComponents(theme: Theme) {
             style: {
               height: 34,
               width: 34,
-              border: `1px solid ${
-                theme.palette.mode === 'dark'
-                  ? theme.palette.primaryDark[700]
-                  : theme.palette.grey[200]
-              }`,
+              border: `1px solid ${theme.palette.mode === 'dark'
+                ? theme.palette.primaryDark[700]
+                : theme.palette.grey[200]
+                }`,
               borderRadius: theme.shape.borderRadius,
               color:
                 theme.palette.mode === 'dark'
@@ -409,11 +408,10 @@ export function getThemedComponents(theme: Theme) {
               theme.palette.mode === 'dark'
                 ? theme.palette.primaryDark[900]
                 : theme.palette.background.paper,
-            border: `1px solid ${
-              theme.palette.mode === 'dark'
-                ? theme.palette.primaryDark[700]
-                : theme.palette.grey[200]
-            }`,
+            border: `1px solid ${theme.palette.mode === 'dark'
+              ? theme.palette.primaryDark[700]
+              : theme.palette.grey[200]
+              }`,
             '& .MuiMenuItem-root': {
               fontSize: theme.typography.pxToRem(14),
               fontWeight: 500,
@@ -447,9 +445,8 @@ export function getThemedComponents(theme: Theme) {
       MuiPopover: {
         styleOverrides: {
           paper: {
-            boxShadow: `0px 4px 20px ${
-              theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(170, 180, 190, 0.3)'
-            }`,
+            boxShadow: `0px 4px 20px ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(170, 180, 190, 0.3)'
+              }`,
           },
         },
       },
@@ -620,9 +617,8 @@ export function getThemedComponents(theme: Theme) {
             }),
             'a&, button&': {
               '&:hover': {
-                boxShadow: `0px 4px 20px ${
-                  theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(170, 180, 190, 0.3)'
-                }`,
+                boxShadow: `0px 4px 20px ${theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(170, 180, 190, 0.3)'
+                  }`,
               },
             },
           },
@@ -686,41 +682,6 @@ export function getThemedComponents(theme: Theme) {
         styleOverrides: {
           tooltip: {
             padding: '5px 9px',
-          },
-        },
-      },
-      MuiSwitch: {
-        styleOverrides: {
-          root: {
-            width: 32,
-            height: 20,
-            padding: 0,
-            '& .MuiSwitch-switchBase': {
-              '&.Mui-checked': {
-                transform: 'translateX(11px)',
-                color: '#fff',
-              },
-            },
-          },
-          switchBase: {
-            height: 20,
-            width: 20,
-            padding: 0,
-            color: '#fff',
-            '&.Mui-checked + .MuiSwitch-track': {
-              opacity: 1,
-            },
-          },
-          track: {
-            opacity: 1,
-            borderRadius: 32,
-            backgroundColor:
-              theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[400],
-          },
-          thumb: {
-            flexShrink: 0,
-            width: '14px',
-            height: '14px',
           },
         },
       },

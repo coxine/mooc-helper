@@ -1,12 +1,14 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import HTML from "@/components/HTML";
+import { convert } from "html-to-text";
 
 interface CompletionProps {
   question: ObjectiveQ;
+  isSimpleMode?: boolean;
 }
 
-const Completion: React.FC<CompletionProps> = ({ question }) => {
+const Completion: React.FC<CompletionProps> = ({ question, isSimpleMode }) => {
   return (
     <Box
       key={question.id}
@@ -33,14 +35,16 @@ const Completion: React.FC<CompletionProps> = ({ question }) => {
         fontWeight="bold"
         display="block"
       >
-        <HTML html={question.title} />
+        {isSimpleMode ? convert(question.title, { wordwrap: false, }) : <HTML html={question.title} />}
       </Typography>
       <Typography
         sx={{
           mt: 2,
         }}
       >
-        <HTML html={question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者")} />
+        {isSimpleMode
+          ? convert(question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者"), { wordwrap: false, })
+          : question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者").replace(/<[^>]+>/g, "")}
       </Typography>
     </Box>
   );

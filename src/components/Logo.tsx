@@ -17,9 +17,7 @@ export default function Logo() {
   return (
     <Box sx={{ lineHeight: 0, mr: 2 }}>
       <Link href="/">
-        <a>
-          <LogoIcon />
-        </a>
+        <LogoIcon />
       </Link>
     </Box>
   );

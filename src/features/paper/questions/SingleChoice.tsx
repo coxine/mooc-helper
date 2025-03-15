@@ -5,12 +5,14 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import HTML from "@/components/HTML";
+import { convert } from "html-to-text";
 
 interface SingleChoiceProps {
   question: ObjectiveQ;
+  isSimpleMode?: boolean;
 }
 
-const SingleChoice: React.FC<SingleChoiceProps> = ({ question }) => {
+const SingleChoice: React.FC<SingleChoiceProps> = ({ question, isSimpleMode }) => {
   return (
     <Box
       key={question.id}
@@ -33,11 +35,11 @@ const SingleChoice: React.FC<SingleChoiceProps> = ({ question }) => {
     >
       <Typography
         color="text.primary"
-        variant="h6"
+        variant="subtitle1"
         fontWeight="bold"
         display="block"
       >
-        <HTML html={question.title} />
+        {isSimpleMode ? convert(question.title, { wordwrap: false, }) : <HTML html={question.title} />}
       </Typography>
       <FormControl>
         <RadioGroup
@@ -53,7 +55,7 @@ const SingleChoice: React.FC<SingleChoiceProps> = ({ question }) => {
               control={<Radio />}
               label={
                 <Typography>
-                  <HTML html={optionDto.content} />
+                  {isSimpleMode ? convert(optionDto.content, { wordwrap: false, }) : <HTML html={optionDto.content} />}
                 </Typography>
               }
             />
