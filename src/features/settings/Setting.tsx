@@ -10,6 +10,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ModeToggleButton from "./ModeToggleButton";
 import MobToken from "./MobToken";
 import { styled } from "@mui/material/styles";
+import { Alert } from "@mui/material";
 
 const Heading = styled(Typography)(({ theme }) => ({
   margin: "20px 0 10px",
@@ -71,6 +72,14 @@ export default function Settings() {
             mob-token
           </Heading>
           <MobToken />
+          <Heading gutterBottom id="settings-mode">
+            注意！
+          </Heading>
+          <Alert severity="error">
+            查询答案会<b>开启一次测验</b>，请确认查询的内容是否有答题时间和次数的限制！
+            <br />
+            如果有类似限制，请<b>慎重查询答案</b>，以免发生因答题次数耗尽无法答题<b>获得零分</b>的悲剧！
+          </Alert>
         </Box>
       </Drawer>
     </>
