@@ -1,12 +1,12 @@
 {
   "name": "mooc-helper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build && next export",
+    "export": "cross-env NEXT_EXPORT=1 next build",
     "start": "next start",
     "lint": "next lint",
     "tauri": "cross-env NEXT_PUBLIC_TAURI=1 tauri"
