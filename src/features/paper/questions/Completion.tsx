@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import HTML from "@/components/HTML";
 import { convert } from "html-to-text";
+import Plaintext from "@/components/Plaintext";
 
 interface CompletionProps {
   question: ObjectiveQ;
@@ -34,7 +35,7 @@ const Completion: React.FC<CompletionProps> = ({ question, isSimpleMode }) => {
         fontWeight="bold"
         display="block"
       >
-        {isSimpleMode ? convert(question.title, { wordwrap: false, }) : <HTML html={question.title} />}
+        {isSimpleMode ? <Plaintext html={question.title}></Plaintext> : <HTML html={question.title} />}
       </Typography>
       <Typography
         sx={{

@@ -5,7 +5,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import HTML from "@/components/HTML";
-import { convert } from "html-to-text";
+import Plaintext from "@/components/Plaintext";
 
 interface MultipleChoiceProps {
   question: ObjectiveQ;
@@ -38,7 +38,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode 
         fontWeight="bold"
         display="block"
       >
-        {isSimpleMode ? convert(question.title, { wordwrap: false }) : <HTML html={question.title} />}
+        {isSimpleMode ? <Plaintext html={question.title}></Plaintext> : <HTML html={question.title} />}
       </Typography>
       <FormControl>
         <FormGroup>
@@ -48,7 +48,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode 
               control={<Checkbox checked={optionDto.answer} />}
               label={
                 <Typography>
-                  {isSimpleMode ? convert(optionDto.content, { wordwrap: false }) : <HTML html={optionDto.content} />}
+                  {isSimpleMode ? <Plaintext html={optionDto.content}></Plaintext> : <HTML html={optionDto.content} />}
                 </Typography>
               }
             />
