@@ -186,8 +186,11 @@ const Home: NextPage<{
                 The MOOC <GradientText>&nbsp;Helper</GradientText> you always
                 wanted
               </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3, maxWidth: 500 }}>
+              <Typography color="text.secondary" sx={{ mb: 0, maxWidth: 500 }}>
                 查询中国大学MOOC(慕课)单元测验、单元作业、期中/期末测试答案
+              </Typography>
+              <Typography color="text.secondary" sx={{ mb: 3, maxWidth: 500 }}>
+                首次使用请点击右上角设置按钮，设置<code>MOB-TOKEN</code>
               </Typography>
             </Box>
           </Box>

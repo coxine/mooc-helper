@@ -69,10 +69,10 @@ export default function Settings() {
           </Heading>
           <ModeToggleButton />
           <Heading gutterBottom id="settings-mode">
-            如何获取 mob-token?
+            如何获取 <code>MOB-TOKEN</code>?
           </Heading>
           <Alert severity="info">
-            请在手机上开启抓包应用，随后登录到慕课 APP，在请求中即可找到对应账户的 mob-token。
+            请在手机上开启抓包应用，随后登录到慕课 APP，在请求中即可找到对应账户的 <code>MOB-TOKEN</code>。
             <br />
             常见抓包应用：<Link href="https://github.com/emanuele-f/PCAPdroid">PCAPDroid</Link>、<Link href="https://reqable.com/zh-CN/android/">Reqable</Link>（原 HttpCanary，现已闭源）、Fiddler、Charles等
           </Alert>
