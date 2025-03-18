@@ -7,9 +7,10 @@ import Plaintext from "@/components/Plaintext";
 interface CompletionProps {
   question: ObjectiveQ;
   isSimpleMode?: boolean;
+  isAnswerVisible?: boolean;
 }
 
-const Completion: React.FC<CompletionProps> = ({ question, isSimpleMode }) => {
+const Completion: React.FC<CompletionProps> = ({ question, isSimpleMode, isAnswerVisible }) => {
   return (
     <Box
       key={question.id}
@@ -42,9 +43,13 @@ const Completion: React.FC<CompletionProps> = ({ question, isSimpleMode }) => {
           mt: 2,
         }}
       >
-        {isSimpleMode
-          ? convert(question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者"), { wordwrap: false, })
-          : question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者").replace(/<[^>]+>/g, "")}
+        {() => {
+          if (isAnswerVisible) {
+            isSimpleMode
+              ? convert(question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者"), { wordwrap: false, })
+              : question.stdAnswer.replace(/##%_YZPRLFH_%##/g, "或者").replace(/<[^>]+>/g, "")
+          }
+        }}
       </Typography>
     </Box>
   );

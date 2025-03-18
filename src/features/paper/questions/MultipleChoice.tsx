@@ -10,9 +10,10 @@ import Plaintext from "@/components/Plaintext";
 interface MultipleChoiceProps {
   question: ObjectiveQ;
   isSimpleMode?: boolean;
+  isAnswerVisible?: boolean;
 }
 
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode }) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode, isAnswerVisible }) => {
   return (
     <Box
       key={question.id}
@@ -45,7 +46,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ question, isSimpleMode 
           {question.optionDtos.map((optionDto) => (
             <FormControlLabel
               key={optionDto.id}
-              control={<Checkbox checked={optionDto.answer} />}
+              control={<Checkbox checked={isAnswerVisible ? optionDto.answer : false} />}
               label={
                 <Typography>
                   {isSimpleMode ? <Plaintext html={optionDto.content}></Plaintext> : <HTML html={optionDto.content} />}

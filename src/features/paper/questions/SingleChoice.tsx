@@ -10,9 +10,10 @@ import Plaintext from "@/components/Plaintext";
 interface SingleChoiceProps {
   question: ObjectiveQ;
   isSimpleMode?: boolean;
+  isAnswerVisible?: boolean;
 }
 
-const SingleChoice: React.FC<SingleChoiceProps> = ({ question, isSimpleMode }) => {
+const SingleChoice: React.FC<SingleChoiceProps> = ({ question, isSimpleMode, isAnswerVisible }) => {
   return (
     <Box
       key={question.id}
@@ -42,9 +43,9 @@ const SingleChoice: React.FC<SingleChoiceProps> = ({ question, isSimpleMode }) =
       </Typography>
       <FormControl>
         <RadioGroup
-          value={
+          value={isAnswerVisible ?
             question.optionDtos.find((optionDtosItem) => optionDtosItem.answer)
-              ?.id
+              ?.id : false
           }
         >
           {question.optionDtos.map((optionDto) => (
