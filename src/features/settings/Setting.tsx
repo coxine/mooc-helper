@@ -10,7 +10,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ModeToggleButton from "./ModeToggleButton";
 import MobToken from "./MobToken";
 import { styled } from "@mui/material/styles";
-import { Alert } from "@mui/material";
+import { Alert, Link } from "@mui/material";
 
 const Heading = styled(Typography)(({ theme }) => ({
   margin: "20px 0 10px",
@@ -68,6 +68,14 @@ export default function Settings() {
             主题
           </Heading>
           <ModeToggleButton />
+          <Heading gutterBottom id="settings-mode">
+            如何获取 mob-token?
+          </Heading>
+          <Alert severity="info">
+            请在手机上开启抓包应用，随后登录到慕课 APP，在请求中即可找到对应账户的 mob-token。
+            <br />
+            常见抓包应用：<Link href="https://github.com/emanuele-f/PCAPdroid">PCAPDroid</Link>、<Link href="https://reqable.com/zh-CN/android/">Reqable</Link>（原 HttpCanary，现已闭源）、Fiddler、Charles等
+          </Alert>
           <Heading gutterBottom id="settings-mode">
             mob-token
           </Heading>
