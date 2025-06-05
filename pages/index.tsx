@@ -20,6 +20,7 @@ import Settings from '@/features/settings'
 import store from '@/lib/store'
 import { openExternal } from '@/utils'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import { GlobalStyles } from '@mui/material'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
@@ -256,6 +257,28 @@ const Home: NextPage<{
               ref={paperRef}
               sx={{ flex: 1, height: '100%', overflow: 'auto' }}
             >
+              <GlobalStyles
+                styles={{
+                  '@media print': {
+                    'html, body': {
+                      backgroundColor: '#fff',
+                      color: '#000 !important',
+                    },
+                    'body *': {
+                      visibility: 'hidden',
+                    },
+                    '#answer-box, #answer-box *, #homework-box, #homework-box *':
+                      {
+                        visibility: 'visible',
+                      },
+                    '#answer-box,  #homework-box': {
+                      position: 'absolute',
+                      left: 0,
+                      top: 0,
+                    },
+                  },
+                }}
+              />
               <PaperControls
                 isAnswerVisible={isAnswerVisible}
                 isSimpleMode={isSimpleMode}

@@ -13,7 +13,7 @@ export default function Homework({
   isSimpleMode?: boolean
 }) {
   return (
-    <Box>
+    <Box id="homework-box">
       {mocPaperDto.subjectiveQList.map((subjectiveQ) => {
         return (
           <Box
@@ -39,12 +39,7 @@ export default function Homework({
             }}
           >
             <span>
-              <Typography
-                color="text.primary"
-                variant="h6"
-                fontWeight="bold"
-                display="block"
-              >
+              <Typography variant="h6" display="block">
                 {isSimpleMode ? (
                   <Plaintext html={subjectiveQ.title}></Plaintext>
                 ) : (
