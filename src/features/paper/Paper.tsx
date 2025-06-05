@@ -4,24 +4,17 @@ import Box from "@mui/material/Box";
 import SingleChoice from "./questions/SingleChoice";
 import MultipleChoice from "./questions/MultipleChoice";
 import Completion from "./questions/Completion";
-import { Button, FormControlLabel, GlobalStyles, Switch } from "@mui/material";
+import { GlobalStyles } from "@mui/material";
+import PaperControls from "./PaperControls";
 
-export default function Paper({ mocPaperDto }: { mocPaperDto: MocPaperDto }) {
-  const [isSimpleMode, setIsSimpleMode] = useState(false);
-  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-
-  const handleSimpleModeToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsSimpleMode(event.target.checked);
-  };
-
-  const handleAnswerVisibleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsAnswerVisible(event.target.checked);
-  };
-
-  const handlePrint = () => {
-    window.print();
-  };
-
+export default function Paper({
+  mocPaperDto,
+  isAnswerVisible,
+  isSimpleMode }: {
+    mocPaperDto: MocPaperDto
+    isAnswerVisible?: boolean;
+    isSimpleMode?: boolean;
+  }) {
   return (
     <Box>
       <GlobalStyles
@@ -43,21 +36,7 @@ export default function Paper({ mocPaperDto }: { mocPaperDto: MocPaperDto }) {
               top: 0,
             },
           },
-        }}
-      />
-      <Box display="flex" justifyContent="flex-end" alignItems="center" mb={2} mt={2}>
-        <FormControlLabel
-          control={<Switch checked={isAnswerVisible} onChange={handleAnswerVisibleToggle} />}
-          label="显示答案"
-        />
-        <FormControlLabel
-          control={<Switch checked={isSimpleMode} onChange={handleSimpleModeToggle} />}
-          label="简洁模式（格式混乱、打印时使用）"
-        />
-        <Button variant="contained" color="primary" onClick={handlePrint}>
-          打印 / 导出 PDF
-        </Button>
-      </Box>
+        }} />
       <Box id="answer-box">
         {mocPaperDto.objectiveQList.map((objectiveQ) => {
           switch (objectiveQ.type) {

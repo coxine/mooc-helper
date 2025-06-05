@@ -4,8 +4,12 @@ import HTML from "@/components/HTML";
 
 export default function Homework({
   mocPaperDto,
+  isAnswerVisible,
+  isSimpleMode,
 }: {
   mocPaperDto: MocPaperDto;
+  isAnswerVisible?: boolean;
+  isSimpleMode?: boolean;
 }) {
   return (
     <Box>

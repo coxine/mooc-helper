@@ -1,34 +1,35 @@
-import type { NextPage } from "next";
-import * as React from "react";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { courseList as getCourseList, homework, test } from "@/api";
 import Logo from "@/components/Logo";
-import { Banner, AppHeader } from "@/features/layout";
-import Settings from "@/features/settings";
+import { PAGE_SIZE } from "@/constants";
+import { ChapterTreeView } from "@/features/chapter-tree-view";
 import {
   countState,
+  CourseCard,
+  CourseDrawer,
   courseListState,
   recentCourseListState,
-  selectedCourseState,
-  CourseCard,
   selectedContentState,
+  selectedCourseState,
 } from "@/features/course";
-import { Message, messageState } from "@/features/message";
-import { useSetRecoilState, useRecoilState, useRecoilValue } from "recoil";
-import { CourseDrawer } from "@/features/course";
-import { styled } from "@mui/material/styles";
-import { ChapterTreeView } from "@/features/chapter-tree-view";
 import Homework from "@/features/homework";
+import { AppHeader, Banner } from "@/features/layout";
+import { Message, messageState } from "@/features/message";
 import Paper from "@/features/paper";
-import { courseList as getCourseList, homework, test } from "@/api";
-import { PAGE_SIZE } from "@/constants";
-import { openExternal } from "@/utils";
+import PaperControls from "@/features/paper/PaperControls";
+import Settings from "@/features/settings";
 import store from "@/lib/store";
+import { openExternal } from "@/utils";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import type { NextPage } from "next";
+import * as React from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const GradientText = styled("span")<{
   color?: "primary" | "error" | "success" | "warning";
@@ -46,6 +47,9 @@ const Home: NextPage<{
   bannerLink: string | null;
   bannerLinkDescription: string | null;
 }> = (props) => {
+  const [isSimpleMode, setIsSimpleMode] = React.useState(false);
+  const [isAnswerVisible, setIsAnswerVisible] = React.useState(false);
+
   const [courseList, setCourseList] = useRecoilState(courseListState);
   const [recentCourseList, setRecentCourseList] = useRecoilState(
     recentCourseListState
@@ -62,8 +66,21 @@ const Home: NextPage<{
 
   const paperRef = React.useRef<HTMLDivElement>(null);
 
+
+  const handleSimpleModeToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsSimpleMode(event.target.checked);
+  };
+
+  const handleAnswerVisibleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAnswerVisible(event.target.checked);
+  };
+
   const selectCourse = (course: Course) => {
     setSelectedCourse(course);
+  };
+
+  const handlePrint = () => {
+    window.print();
   };
 
   React.useEffect(() => {
@@ -236,8 +253,15 @@ const Home: NextPage<{
               ref={paperRef}
               sx={{ flex: 1, height: "100%", overflow: "auto" }}
             >
-              <Homework mocPaperDto={mocPaperDto} />
-              <Paper mocPaperDto={mocPaperDto} />
+              <PaperControls
+                isAnswerVisible={isAnswerVisible}
+                isSimpleMode={isSimpleMode}
+                onAnswerVisibleToggle={handleAnswerVisibleToggle}
+                onSimpleModeToggle={handleSimpleModeToggle}
+                onPrint={handlePrint}
+              />
+              <Homework mocPaperDto={mocPaperDto} isAnswerVisible={isAnswerVisible} isSimpleMode={isSimpleMode} />
+              <Paper mocPaperDto={mocPaperDto} isAnswerVisible={isAnswerVisible} isSimpleMode={isSimpleMode} />
             </Box>
           </Box>
         )}
