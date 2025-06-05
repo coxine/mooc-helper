@@ -24,10 +24,10 @@
     "got": "^12.6.1",
     "html-react-parser": "^1.4.14",
     "html-to-text": "^9.0.5",
-    "http-proxy-middleware": "^2.0.7",
+    "http-proxy-middleware": "^2.0.9",
     "ky": "^1.7.5",
     "lodash": "^4.17.21",
-    "next": "14.2.21",
+    "next": "14.2.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "recoil": "^0.6.1"
