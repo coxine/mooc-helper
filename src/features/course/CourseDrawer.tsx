@@ -1,24 +1,24 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import SwipeableDrawer from "@mui/material/Drawer";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import BookIcon from "@mui/icons-material/Book";
-import Pagination from "@mui/material/Pagination";
-import CourseCard from "@/features/course/CourseCard";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { countState, courseListState, selectedCourseState } from ".";
-import { courseList as getCourseList } from "@/api";
-import { PAGE_SIZE } from "@/constants";
-import { messageState } from "@/features/message";
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import SwipeableDrawer from '@mui/material/Drawer'
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton'
+import BookIcon from '@mui/icons-material/Book'
+import Pagination from '@mui/material/Pagination'
+import CourseCard from '@/features/course/CourseCard'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { countState, courseListState, selectedCourseState } from '.'
+import { courseList as getCourseList } from '@/api'
+import { PAGE_SIZE } from '@/constants'
+import { messageState } from '@/features/message'
 
 export default function SwipeableTemporaryDrawer() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
-  const [courseList, setCourseList] = useRecoilState(courseListState);
-  const count = useRecoilValue(countState);
-  const setMessage = useSetRecoilState(messageState);
-  const setSelectedCourse = useSetRecoilState(selectedCourseState);
+  const [courseList, setCourseList] = useRecoilState(courseListState)
+  const count = useRecoilValue(countState)
+  const setMessage = useSetRecoilState(messageState)
+  const setSelectedCourse = useSetRecoilState(selectedCourseState)
 
   const changeCourseList: (
     event: React.ChangeEvent<unknown>,
@@ -26,29 +26,29 @@ export default function SwipeableTemporaryDrawer() {
   ) => void = React.useCallback(
     async (_, page: number) => {
       try {
-        const { status, results } = await getCourseList(page, PAGE_SIZE);
+        const { status, results } = await getCourseList(page, PAGE_SIZE)
         if (status.code === 0) {
-          setCourseList(results.result);
+          setCourseList(results.result)
         } else {
           setMessage({
             show: true,
             msg: status.message,
-          });
+          })
         }
       } catch (error) {
         setMessage({
           show: true,
           msg: String(error),
-        });
+        })
       }
     },
     [setCourseList, setMessage]
-  );
+  )
 
   const selectCourse = (course: Course) => {
-    setSelectedCourse(course);
-    setOpen(false);
-  };
+    setSelectedCourse(course)
+    setOpen(false)
+  }
 
   return (
     <>
@@ -64,13 +64,13 @@ export default function SwipeableTemporaryDrawer() {
       >
         <Box
           sx={(theme) => ({
-            overflow: "auto",
-            "&::-webkit-scrollbar-thumb": {
-              border: `3px solid ${theme.palette.primaryDark["900"]}`,
+            overflow: 'auto',
+            '&::-webkit-scrollbar-thumb': {
+              border: `3px solid ${theme.palette.primaryDark['900']}`,
               borderRadius: 20,
-              backgroundColor: theme.palette.primaryDark["700"],
+              backgroundColor: theme.palette.primaryDark['700'],
             },
-            "&::-webkit-scrollbar": {
+            '&::-webkit-scrollbar': {
               width: 12,
             },
           })}
@@ -87,5 +87,5 @@ export default function SwipeableTemporaryDrawer() {
         </Box>
       </SwipeableDrawer>
     </>
-  );
+  )
 }

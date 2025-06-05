@@ -1,21 +1,21 @@
-import * as React from "react";
-import TreeView from "@mui/lab/TreeView";
-import KeyboardArrowDownRounded from "@mui/icons-material/KeyboardArrowDownRounded";
-import KeyboardArrowUpRounded from "@mui/icons-material/KeyboardArrowUpRounded";
-import CustomTreeItem from "./CustomTreeItem";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { courseInfo } from "@/api";
-import { selectedContentState, selectedCourseState } from "@/features/course";
-import { messageState } from "@/features/message";
+import * as React from 'react'
+import TreeView from '@mui/lab/TreeView'
+import KeyboardArrowDownRounded from '@mui/icons-material/KeyboardArrowDownRounded'
+import KeyboardArrowUpRounded from '@mui/icons-material/KeyboardArrowUpRounded'
+import CustomTreeItem from './CustomTreeItem'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { courseInfo } from '@/api'
+import { selectedContentState, selectedCourseState } from '@/features/course'
+import { messageState } from '@/features/message'
 
 export default function ChapterTreeView() {
-  const [expanded, setExpanded] = React.useState<string[]>([]);
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [chapters, setChapters] = React.useState<Chapter[]>([]);
+  const [expanded, setExpanded] = React.useState<string[]>([])
+  const [selected, setSelected] = React.useState<string[]>([])
+  const [chapters, setChapters] = React.useState<Chapter[]>([])
 
-  const selectedCourse = useRecoilValue(selectedCourseState);
-  const setSelectedContent = useSetRecoilState(selectedContentState);
-  const setMessage = useSetRecoilState(messageState);
+  const selectedCourse = useRecoilValue(selectedCourseState)
+  const setSelectedContent = useSetRecoilState(selectedContentState)
+  const setMessage = useSetRecoilState(messageState)
 
   React.useEffect(() => {
     const handleSelectedCourseChange = async (course: Course | null) => {
@@ -24,41 +24,41 @@ export default function ChapterTreeView() {
           const { status, results } = await courseInfo(
             course.id,
             course.termPanel.id
-          );
+          )
           if (status.code === 0) {
-            setChapters(results.termDto.chapters);
+            setChapters(results.termDto.chapters)
             if (selectedCourse) {
-              setExpanded([String(selectedCourse.id)]);
+              setExpanded([String(selectedCourse.id)])
             }
           } else {
             setMessage({
               show: true,
               msg: status.message,
-            });
+            })
           }
         } catch (error) {
           setMessage({
             show: true,
             msg: String(error),
-          });
+          })
         }
       }
-    };
+    }
 
-    handleSelectedCourseChange(selectedCourse);
-  }, [selectedCourse, setMessage]);
+    handleSelectedCourseChange(selectedCourse)
+  }, [selectedCourse, setMessage])
 
   return (
     <TreeView
       aria-label="folder"
       defaultCollapseIcon={
-        <KeyboardArrowUpRounded sx={{ fontSize: 16, color: "primary.main" }} />
+        <KeyboardArrowUpRounded sx={{ fontSize: 16, color: 'primary.main' }} />
       }
       defaultExpandIcon={
-        <KeyboardArrowDownRounded sx={{ fontSize: 16, color: "grey.600" }} />
+        <KeyboardArrowDownRounded sx={{ fontSize: 16, color: 'grey.600' }} />
       }
       defaultEndIcon={<div style={{ width: 24 }} />}
-      sx={{ py: 1, overflowY: "auto" }}
+      sx={{ py: 1, overflowY: 'auto' }}
       expanded={expanded}
       selected={selected}
       onNodeToggle={(_: React.SyntheticEvent<Element, Event>, nodeIds) =>
@@ -72,7 +72,7 @@ export default function ChapterTreeView() {
       {selectedCourse && (
         <CustomTreeItem
           key={selectedCourse.id}
-          nodeId={selectedCourse.id + ""}
+          nodeId={selectedCourse.id + ''}
           label={selectedCourse.name}
         >
           {chapters.map((chapter) => (
@@ -90,7 +90,7 @@ export default function ChapterTreeView() {
                     lastNestedChild: true,
                     onClick: () =>
                       setSelectedContent({
-                        type: "homework",
+                        type: 'homework',
                         contentId: homework.contentId,
                       }),
                   }}
@@ -105,9 +105,9 @@ export default function ChapterTreeView() {
                     lastNestedChild: true,
                     onClick: () => {
                       setSelectedContent({
-                        type: "quiz",
+                        type: 'quiz',
                         contentId: quiz.contentId,
-                      });
+                      })
                     },
                   }}
                 />
@@ -121,7 +121,7 @@ export default function ChapterTreeView() {
                     lastNestedChild: true,
                     onClick: () =>
                       setSelectedContent({
-                        type: "quiz",
+                        type: 'quiz',
                         contentId: chapter.exam.objectTestVo.id,
                       }),
                   }}
@@ -136,7 +136,7 @@ export default function ChapterTreeView() {
                     lastNestedChild: true,
                     onClick: () =>
                       setSelectedContent({
-                        type: "homework",
+                        type: 'homework',
                         contentId: chapter.exam.subjectTestVo.id,
                       }),
                   }}
@@ -147,5 +147,5 @@ export default function ChapterTreeView() {
         </CustomTreeItem>
       )}
     </TreeView>
-  );
+  )
 }

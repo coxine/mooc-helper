@@ -14,9 +14,7 @@
     "allowlist": {
       "http": {
         "request": true,
-        "scope": [
-          "https://www.icourse163.org/*"
-        ]
+        "scope": ["https://www.icourse163.org/*"]
       },
       "shell": {
         "open": true,

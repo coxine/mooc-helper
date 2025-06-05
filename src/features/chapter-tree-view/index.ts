@@ -1,3 +1,3 @@
-import ChapterTreeView from "./ChapterTreeView";
+import ChapterTreeView from './ChapterTreeView'
 
-export { ChapterTreeView };
+export { ChapterTreeView }

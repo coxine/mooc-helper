@@ -1,12 +1,12 @@
-import type { TreeItemContentProps } from "@mui/lab/TreeItem";
+import type { TreeItemContentProps } from '@mui/lab/TreeItem'
 
-import * as React from "react";
-import { useTreeItem } from "@mui/lab/TreeItem";
+import * as React from 'react'
+import { useTreeItem } from '@mui/lab/TreeItem'
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
-import clsx from "clsx";
+import clsx from 'clsx'
 
 const CustomContent = React.forwardRef(function CustomContent(
   props: TreeItemContentProps & { lastNestedChild?: boolean },
@@ -22,7 +22,7 @@ const CustomContent = React.forwardRef(function CustomContent(
     expansionIcon,
     displayIcon,
     onClick,
-  } = props;
+  } = props
 
   const {
     disabled,
@@ -32,28 +32,28 @@ const CustomContent = React.forwardRef(function CustomContent(
     handleExpansion,
     handleSelection,
     preventSelection,
-  } = useTreeItem(nodeId);
+  } = useTreeItem(nodeId)
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    preventSelection(event);
-  };
+    preventSelection(event)
+  }
 
   const handleExpansionClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    handleExpansion(event);
-  };
+    handleExpansion(event)
+  }
 
   const handleSelectionClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    handleSelection(event);
+    handleSelection(event)
     if (onClick) {
-      onClick(event);
+      onClick(event)
     }
-  };
+  }
 
   return (
     /* @ts-ignore -- Key event is handled by the TreeView */
@@ -74,10 +74,10 @@ const CustomContent = React.forwardRef(function CustomContent(
           sx={{
             width: 6,
             height: 6,
-            borderRadius: "50%",
-            bgcolor: "warning.main",
-            display: "inline-block",
-            verticalAlign: "middle",
+            borderRadius: '50%',
+            bgcolor: 'warning.main',
+            display: 'inline-block',
+            verticalAlign: 'middle',
             zIndex: 1,
           }}
         />
@@ -89,21 +89,21 @@ const CustomContent = React.forwardRef(function CustomContent(
         component="div"
         className={classes.label}
         sx={{
-          "&&": {
-            color: lastNestedChild ? "text.secondary" : "text.primary",
+          '&&': {
+            color: lastNestedChild ? 'text.secondary' : 'text.primary',
             fontWeight: lastNestedChild ? 400 : 500,
           },
-          textOverflow: "ellipsis",
-          overflow: "hidden",
-          whiteSpace: "noWrap",
-          userSelect: "none",
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'noWrap',
+          userSelect: 'none',
         }}
       >
         {label}
       </Typography>
       {expansionIcon || displayIcon}
     </Box>
-  );
-});
+  )
+})
 
-export default CustomContent;
+export default CustomContent

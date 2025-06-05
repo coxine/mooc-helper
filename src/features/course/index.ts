@@ -1,33 +1,33 @@
-import { atom } from "recoil";
-import CourseDrawer from "./CourseDrawer";
-import CourseCard from "./CourseCard";
+import { atom } from 'recoil'
+import CourseDrawer from './CourseDrawer'
+import CourseCard from './CourseCard'
 
 export const courseListState = atom<Course[]>({
-  key: "courseListState",
+  key: 'courseListState',
   default: [],
-});
+})
 
 export const recentCourseListState = atom<Course[]>({
-  key: "recentListState",
+  key: 'recentListState',
   default: [],
-});
+})
 
 export const selectedCourseState = atom<Course | null>({
-  key: "selectedCourseState",
+  key: 'selectedCourseState',
   default: null,
-});
+})
 
 export const selectedContentState = atom<{
-  type: "homework" | "quiz";
-  contentId: number;
+  type: 'homework' | 'quiz'
+  contentId: number
 } | null>({
-  key: "selectedContentState",
+  key: 'selectedContentState',
   default: null,
-});
+})
 
 export const countState = atom({
-  key: "countState",
+  key: 'countState',
   default: 0,
-});
+})
 
-export { CourseDrawer, CourseCard };
+export { CourseDrawer, CourseCard }

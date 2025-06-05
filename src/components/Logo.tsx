@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Box from "@mui/material/Box";
-import SvgIcon from "@mui/material/SvgIcon";
+import Link from 'next/link'
+import Box from '@mui/material/Box'
+import SvgIcon from '@mui/material/SvgIcon'
 
 function LogoIcon() {
   return (
@@ -10,7 +10,7 @@ function LogoIcon() {
         fill="#007FFF"
       ></path>
     </SvgIcon>
-  );
+  )
 }
 
 export default function Logo() {
@@ -20,5 +20,5 @@ export default function Logo() {
         <LogoIcon />
       </Link>
     </Box>
-  );
+  )
 }

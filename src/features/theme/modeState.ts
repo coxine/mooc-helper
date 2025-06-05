@@ -1,8 +1,8 @@
-import { atom } from "recoil";
+import { atom } from 'recoil'
 
-const modeState = atom<"light" | "dark" | "system">({
-  key: "modeState",
-  default: "system",
-});
+const modeState = atom<'light' | 'dark' | 'system'>({
+  key: 'modeState',
+  default: 'system',
+})
 
-export default modeState;
+export default modeState

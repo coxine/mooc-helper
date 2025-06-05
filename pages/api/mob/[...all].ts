@@ -1,21 +1,21 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { createProxyMiddleware } from "http-proxy-middleware";
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 
 const proxyMiddleware = createProxyMiddleware({
-  target: "https://www.icourse163.org",
+  target: 'https://www.icourse163.org',
   changeOrigin: true,
   pathRewrite: {
-    "^/api": "",
+    '^/api': '',
   },
-});
+})
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // @ts-ignore
   proxyMiddleware(req, res, (result: unknown) => {
     if (result instanceof Error) {
-      throw result;
+      throw result
     }
-  });
+  })
 }
 
 export const config = {
@@ -23,4 +23,4 @@ export const config = {
     bodyParser: false,
     externalResolver: true,
   },
-};
+}

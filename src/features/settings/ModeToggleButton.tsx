@@ -1,30 +1,30 @@
-import * as React from "react";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ToggleButton from "@mui/material/ToggleButton";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
-import { styled } from "@mui/material/styles";
-import { useRecoilState } from "recoil";
-import { modeState } from "@/features/theme";
-import store from "@/lib/store";
+import * as React from 'react'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import ToggleButton from '@mui/material/ToggleButton'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
+import { styled } from '@mui/material/styles'
+import { useRecoilState } from 'recoil'
+import { modeState } from '@/features/theme'
+import store from '@/lib/store'
 
 const IconToggleButton = styled(ToggleButton)({
-  display: "flex",
-  justifyContent: "center",
-  width: "100%",
-  "& > *": {
-    marginRight: "8px",
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  '& > *': {
+    marginRight: '8px',
   },
-});
+})
 
 export default function ModeToggleButton() {
-  const [mode, setMode] = useRecoilState(modeState);
+  const [mode, setMode] = useRecoilState(modeState)
 
-  const changeMode = (_: any, value: "light" | "dark" | "system") => {
-    store.set("mode", value);
-    setMode(value);
-  };
+  const changeMode = (_: any, value: 'light' | 'dark' | 'system') => {
+    store.set('mode', value)
+    setMode(value)
+  }
 
   return (
     <ToggleButtonGroup
@@ -63,5 +63,5 @@ export default function ModeToggleButton() {
         dark
       </IconToggleButton>
     </ToggleButtonGroup>
-  );
+  )
 }

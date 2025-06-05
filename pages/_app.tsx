@@ -1,8 +1,8 @@
-import type { AppProps } from "next/app";
+import type { AppProps } from 'next/app'
 
-import Head from "next/head";
-import { RecoilRoot } from "recoil";
-import { BrandingProvider } from "@/features/theme";
+import Head from 'next/head'
+import { RecoilRoot } from 'recoil'
+import { BrandingProvider } from '@/features/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </BrandingProvider>
     </RecoilRoot>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

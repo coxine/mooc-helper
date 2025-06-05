@@ -1,4 +1,4 @@
-import AppHeader from "./AppHeader";
-import Banner from "./Banner";
+import AppHeader from './AppHeader'
+import Banner from './Banner'
 
-export { AppHeader, Banner };
+export { AppHeader, Banner }

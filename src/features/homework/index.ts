@@ -1,3 +1,3 @@
-import Homework from "./Homework";
+import Homework from './Homework'
 
-export default Homework;
+export default Homework

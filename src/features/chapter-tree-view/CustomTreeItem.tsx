@@ -1,69 +1,69 @@
-import type { TreeItemProps } from "@mui/lab/TreeItem";
+import type { TreeItemProps } from '@mui/lab/TreeItem'
 
-import TreeItem from "@mui/lab/TreeItem";
-import CustomContent from "./CustomContent";
+import TreeItem from '@mui/lab/TreeItem'
+import CustomContent from './CustomContent'
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles'
 
 const StyledTreeItem = styled(TreeItem)(({ theme }) => ({
-  "& .MuiTreeItem-content": {
-    border: "none",
-    backgroundColor: "transparent",
+  '& .MuiTreeItem-content': {
+    border: 'none',
+    backgroundColor: 'transparent',
     borderRadius: 5,
     padding: theme.spacing(0.5),
-    textAlign: "left",
-    position: "relative",
+    textAlign: 'left',
+    position: 'relative',
     zIndex: 1,
   },
-  "& .MuiTreeItem-content .MuiTreeItem-label": {
+  '& .MuiTreeItem-content .MuiTreeItem-label': {
     paddingLeft: theme.spacing(1),
   },
-  "& .MuiTreeItem-root": {
-    position: "relative",
-    "&:last-of-type": {
-      "&:before": {
+  '& .MuiTreeItem-root': {
+    position: 'relative',
+    '&:last-of-type': {
+      '&:before': {
         height: 34 / 2,
       },
     },
-    "&:before": {
+    '&:before': {
       content: '""',
-      display: "block",
-      position: "absolute",
+      display: 'block',
+      position: 'absolute',
       left: -18,
-      height: "100%",
+      height: '100%',
       width: 2,
       backgroundColor:
-        theme.palette.mode === "dark"
+        theme.palette.mode === 'dark'
           ? theme.palette.primaryDark[600]
           : theme.palette.grey[200],
     },
   },
-  "& .MuiTreeItem-group": {
+  '& .MuiTreeItem-group': {
     marginLeft: 0,
     paddingLeft: theme.spacing(3),
-    "& .MuiTreeItem-content": {
-      "&:before": {
+    '& .MuiTreeItem-content': {
+      '&:before': {
         content: '""',
-        position: "absolute",
-        display: "block",
+        position: 'absolute',
+        display: 'block',
         width: 24,
         height: 2,
         backgroundColor:
-          theme.palette.mode === "dark"
+          theme.palette.mode === 'dark'
             ? theme.palette.primaryDark[600]
             : theme.palette.grey[200],
-        top: "50%",
+        top: '50%',
         left: 6,
-        transform: "translate(-100%, -50%)",
+        transform: 'translate(-100%, -50%)',
       },
     },
   },
-}));
+}))
 
 const CustomTreeItem = (
   props: TreeItemProps & {
-    ContentProps?: { lastNestedChild?: boolean };
+    ContentProps?: { lastNestedChild?: boolean }
   }
-) => <StyledTreeItem ContentComponent={CustomContent} {...props} />;
+) => <StyledTreeItem ContentComponent={CustomContent} {...props} />
 
-export default CustomTreeItem;
+export default CustomTreeItem

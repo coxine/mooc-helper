@@ -1,15 +1,15 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import HTML from "@/components/HTML";
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import HTML from '@/components/HTML'
 
 export default function Homework({
   mocPaperDto,
   isAnswerVisible,
   isSimpleMode,
 }: {
-  mocPaperDto: MocPaperDto;
-  isAnswerVisible?: boolean;
-  isSimpleMode?: boolean;
+  mocPaperDto: MocPaperDto
+  isAnswerVisible?: boolean
+  isSimpleMode?: boolean
 }) {
   return (
     <Box>
@@ -19,20 +19,20 @@ export default function Homework({
             key={subjectiveQ.id}
             component="span"
             sx={{
-              display: "flex",
+              display: 'flex',
               p: 2,
               my: 1,
-              flexDirection: { xs: "column", md: "row" },
-              alignItems: { md: "center" },
-              transitionProperty: "all",
-              transitionDuration: "150ms",
-              "&:hover, &:focus": {
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { md: 'center' },
+              transitionProperty: 'all',
+              transitionDuration: '150ms',
+              '&:hover, &:focus': {
                 bgcolor: (theme) =>
-                  theme.palette.mode === "dark"
-                    ? "primaryDark.700"
-                    : "grey.100",
-                "@media (hover: none)": {
-                  bgcolor: "transparent",
+                  theme.palette.mode === 'dark'
+                    ? 'primaryDark.700'
+                    : 'grey.100',
+                '@media (hover: none)': {
+                  bgcolor: 'transparent',
                 },
               },
             }}
@@ -55,7 +55,7 @@ export default function Homework({
               >
                 {subjectiveQ.judgeDtos.map((judgeDto) => (
                   <span
-                    style={{ display: "flex", flexDirection: "column" }}
+                    style={{ display: 'flex', flexDirection: 'column' }}
                     key={judgeDto.id}
                   >
                     <HTML html={judgeDto.msg} />
@@ -64,8 +64,8 @@ export default function Homework({
               </Typography>
             </span>
           </Box>
-        );
+        )
       })}
     </Box>
-  );
+  )
 }

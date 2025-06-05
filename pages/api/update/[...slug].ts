@@ -1,57 +1,57 @@
-import got from "got";
-import type { NextApiRequest, NextApiResponse } from "next";
+import got from 'got'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 // https://docs.rs/tauri/1.2.0/tauri/updater/struct.UpdateBuilder.html#method.target
 const platformSuffixMap: Record<string, string> = {
-  windows: ".msi.zip",
-};
+  windows: '.msi.zip',
+}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { slug } = req.query;
-  const isSlugArray = Array.isArray(slug);
-  const [target, currentVersion] = isSlugArray ? slug : [];
+  const { slug } = req.query
+  const isSlugArray = Array.isArray(slug)
+  const [target, currentVersion] = isSlugArray ? slug : []
 
   if (target) {
-    const suffix = platformSuffixMap[target ?? ""];
+    const suffix = platformSuffixMap[target ?? '']
     if (suffix) {
       const releases = await got(
-        "https://api.github.com/repos/coxine/mooc-helper/releases"
+        'https://api.github.com/repos/coxine/mooc-helper/releases'
       ).json<
         [
           {
-            tag_name: string;
-            body: string;
-            draft: boolean;
-            prerelease: boolean;
-            published_at: string;
+            tag_name: string
+            body: string
+            draft: boolean
+            prerelease: boolean
+            published_at: string
             assets: [
               {
-                name: string;
-                browser_download_url: string;
-              }
-            ];
-          }
+                name: string
+                browser_download_url: string
+              },
+            ]
+          },
         ]
-      >();
+      >()
 
       const latestRelease = releases.find(
         (item: any) => !item.draft && !item.prerelease
-      );
+      )
 
       if (latestRelease) {
-        const version = latestRelease.tag_name.slice(1);
+        const version = latestRelease.tag_name.slice(1)
         if (version !== currentVersion) {
           const binaryAsset = latestRelease.assets.find((e: any) =>
             e.name.endsWith(suffix)
-          );
+          )
           const sigAsset = latestRelease.assets.find((e: any) =>
             e.name.endsWith(`${suffix}.sig`)
-          );
+          )
           if (binaryAsset && sigAsset) {
-            const sigContent = await got(sigAsset.browser_download_url).text();
+            const sigContent = await got(sigAsset.browser_download_url).text()
 
             res.status(200).json({
               url: binaryAsset.browser_download_url,
@@ -59,14 +59,14 @@ export default async function handler(
               notes: latestRelease.body,
               pub_date: latestRelease.published_at,
               signature: sigContent,
-            });
+            })
 
-            return;
+            return
           }
         }
       }
     }
   }
 
-  res.status(204).end();
+  res.status(204).end()
 }

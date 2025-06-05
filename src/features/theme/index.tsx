@@ -1,4 +1,4 @@
-import BrandingProvider from "./BrandingThemeProvider";
-import modeState from "./modeState";
+import BrandingProvider from './BrandingThemeProvider'
+import modeState from './modeState'
 
-export { BrandingProvider, modeState };
+export { BrandingProvider, modeState }
