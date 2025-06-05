@@ -12,20 +12,20 @@
     "tauri": "cross-env NEXT_PUBLIC_TAURI=1 tauri"
   },
   "dependencies": {
-    "@babel/core": "^7.26.10",
+    "@babel/core": "^7.27.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^5.16.14",
+    "@mui/icons-material": "^5.17.1",
     "@mui/lab": "5.0.0-alpha.83",
-    "@mui/material": "^5.16.14",
-    "@mui/utils": "^5.16.14",
+    "@mui/material": "^5.17.1",
+    "@mui/utils": "^5.17.1",
     "@tauri-apps/api": "^1.6.0",
     "clsx": "^1.2.1",
     "got": "^12.6.1",
     "html-react-parser": "^1.4.14",
     "html-to-text": "^9.0.5",
     "http-proxy-middleware": "^2.0.9",
-    "ky": "^1.7.5",
+    "ky": "^1.8.1",
     "lodash": "^4.17.21",
     "next": "14.2.29",
     "react": "18.2.0",
@@ -33,15 +33,15 @@
     "recoil": "^0.6.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.4",
     "@tauri-apps/cli": "^1.6.3",
-    "@types/lodash": "^4.17.16",
     "@types/html-to-text": "9.0.4",
+    "@types/lodash": "^4.17.17",
     "@types/node": "^17.0.45",
-    "@types/react": "^17.0.83",
+    "@types/react": "^17.0.87",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^12.3.4",
+    "eslint-config-next": "^12.3.7",
     "typescript": "^4.9.5"
   }
 }
