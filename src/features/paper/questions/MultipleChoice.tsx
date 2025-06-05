@@ -38,7 +38,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({
         },
       }}
     >
-      <Typography variant="subtitle1" fontWeight="bold" display="block">
+      <Typography variant="subtitle1" display="block">
         {isSimpleMode ? (
           <Plaintext html={question.title}></Plaintext>
         ) : (

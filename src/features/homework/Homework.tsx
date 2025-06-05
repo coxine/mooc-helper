@@ -39,7 +39,7 @@ export default function Homework({
             }}
           >
             <span>
-              <Typography variant="h6" display="block">
+              <Typography variant="subtitle1" display="block">
                 {isSimpleMode ? (
                   <Plaintext html={subjectiveQ.title}></Plaintext>
                 ) : (

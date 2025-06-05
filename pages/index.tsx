@@ -121,7 +121,7 @@ const Home: NextPage<{
     if (selectedContent?.type === 'quiz') {
       updateMocPaperDto(test, selectedContent.contentId)
     }
-  }, [selectedContent])
+  }, [selectedContent, setMessage])
 
   React.useEffect(() => {
     setMocPaperDto({
@@ -163,7 +163,13 @@ const Home: NextPage<{
         })
       }
     })
-  }, [])
+  }, [
+    courseList.length,
+    setCount,
+    setCourseList,
+    setMessage,
+    setRecentCourseList,
+  ])
 
   return (
     <>
