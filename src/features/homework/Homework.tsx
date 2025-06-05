@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import HTML from '@/components/HTML'
+import Plaintext from '@/components/Plaintext'
 
 export default function Homework({
   mocPaperDto,
@@ -44,24 +45,33 @@ export default function Homework({
                 fontWeight="bold"
                 display="block"
               >
-                {/* {htmr(subjectiveQ.title, { transform })} */}
-                <HTML html={subjectiveQ.title} />
+                {isSimpleMode ? (
+                  <Plaintext html={subjectiveQ.title}></Plaintext>
+                ) : (
+                  <HTML html={subjectiveQ.title} />
+                )}
               </Typography>
 
-              <Typography
-                sx={{
-                  mt: 2,
-                }}
-              >
-                {subjectiveQ.judgeDtos.map((judgeDto) => (
-                  <span
-                    style={{ display: 'flex', flexDirection: 'column' }}
-                    key={judgeDto.id}
-                  >
-                    <HTML html={judgeDto.msg} />
-                  </span>
-                ))}
-              </Typography>
+              {isAnswerVisible && (
+                <Typography
+                  sx={{
+                    mt: 2,
+                  }}
+                >
+                  {subjectiveQ.judgeDtos.map((judgeDto) => (
+                    <span
+                      style={{ display: 'flex', flexDirection: 'column' }}
+                      key={judgeDto.id}
+                    >
+                      {isSimpleMode ? (
+                        <Plaintext html={judgeDto.msg}></Plaintext>
+                      ) : (
+                        <HTML html={judgeDto.msg} />
+                      )}
+                    </span>
+                  ))}
+                </Typography>
+              )}
             </span>
           </Box>
         )
