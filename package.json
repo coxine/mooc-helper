@@ -28,7 +28,7 @@
     "http-proxy-middleware": "^2.0.9",
     "ky": "^1.8.1",
     "lodash": "^4.17.21",
-    "next": "14.2.29",
+    "next": "14.2.35",
     "prettier": "^3.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
