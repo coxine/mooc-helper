@@ -27,7 +27,7 @@
     "html-to-text": "^9.0.5",
     "http-proxy-middleware": "^2.0.9",
     "ky": "^1.8.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "next": "15.5.10",
     "prettier": "^3.5.3",
     "react": "18.2.0",
