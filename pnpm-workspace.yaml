@@ -1,5 +1,5 @@
 allowBuilds:
-  sharp: set this to true or false
+  sharp: ture
 minimumReleaseAgeExclude:
   - yaml@1.10.3
   - postcss@8.5.10 || 8.5.12 || 8.5.18 || 8.5.23
